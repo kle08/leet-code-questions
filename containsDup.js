@@ -27,3 +27,16 @@ function containsDuplicate(nums) {
   }
   return duplicate;
 };
+
+// using hash function
+//tc= o(1)
+function containsDuplicate(nums) {
+  let hash = {};
+  for (let i = 0; i < nums.length; i++) {
+    hash[nums[i]] = obj[nums[i]] + 1 || 1;
+    if (hash[nums[i]] > 1) {
+      return true;
+    }
+  }
+  return false;
+}
