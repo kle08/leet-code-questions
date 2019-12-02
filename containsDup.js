@@ -14,3 +14,16 @@
 
 // Input: [1,1,1,3,3,4,3,2,4,2]
 // Output: true
+
+// TC = 0(nlogn)
+
+function containsDuplicate(nums) {
+  let sortNums = nums.sort((a, b) => a - b);
+  let duplicate = false;
+  for (let i = 0; i < sortNums.length; i++) {
+    if (sortNums[i] === sortNums[i + 1]) {
+      duplicate = true;
+    }
+  }
+  return duplicate;
+};
