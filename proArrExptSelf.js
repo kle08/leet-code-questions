@@ -8,3 +8,13 @@
 
 // Follow up:
 // Could you solve it with constant space complexity? (The output array does not count as extra space for the purpose of space complexity analysis.)
+
+var productExceptSelf = function (nums) {
+  const res = [];
+  let prev = 1;
+  for (let k of nums) res.push(prev *= k);
+  for (let prev = 1, i = nums.length - 1; i >= 0; prev *= nums[i--]) {
+    res[i] = i ? prev * res[i - 1] : prev;
+  }
+  return res;
+};
