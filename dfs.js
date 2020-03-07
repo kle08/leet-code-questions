@@ -18,4 +18,11 @@ class Node {
     this.children.push(new Node(name));
     return this;
   }
+  dFS(array) {
+    array.push(this.name)
+    for (const child of this.children) {
+      child.dFS(array)
+    }
+    return array
+  }
 }
