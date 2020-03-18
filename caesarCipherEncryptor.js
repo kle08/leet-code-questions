@@ -5,5 +5,17 @@
 // after z it will restart back to 'A'
 
 function caesarCE(string, key) {
-
+  const newLetter = [];
+  const newKey = key % 26;
+  for (const letter of string) {
+    newLetter.push(helper(letter, newKey));
+  }
+  return newLetter.join('');
 }
+
+function helper(letter, key) {
+  const newLetterCode = letter.charCodeAt() + key;
+  return newLetterCode <= 122 ? String.fromCharCode(newLetterCode) : String.fromCharCode(96 + (newLetterCode % 122));
+}
+
+console.log(caesarCE('zba', 3));
