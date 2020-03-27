@@ -8,5 +8,29 @@
 // compare each indexies to determine to move the poiter up on either array
 
 function smallestDiff(arr1, arr2) {
-
+  arr1.sort((a, b) => a - b);
+  arr2.sort((a, b) => a - b);
+  let idx1 = 0;
+  let idx2 = 0;
+  let smallest = Infinity;
+  let current = Infinity;
+  let smallestPair = [];
+  while (idx1 < arr1.length && idx2 < arr2.length) {
+    let firstNum = arr1[idx1];
+    let secNum = arr2[idx2];
+    if (firstNum < secNum) {
+      current = secNum - firstNum;
+      idx1++;
+    } else if (secNum < firstNum) {
+      current = firstNum - secNum;
+      idx2++;
+    } else {
+      return [firstNum, secNum];
+    }
+    if (smallest > current) {
+      smallest = current;
+      smallestPair = [firstNum, secNum];
+    }
+  }
+  return smallestPair;
 }
