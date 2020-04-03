@@ -8,5 +8,12 @@
 // = 9 (cuz it sumed up 7,2 as the highest value)
 
 function kadane(array) {
-
+  let maxEnding = array[0];
+  let maxSoFar = array[0];
+  for (let i = 1; i < array.lenth; i++) {
+    const num = array[i];
+    maxEnding = Math.max(num, maxEnding + num);
+    maxSoFar = Math.max(maxSoFar, maxEnding);
+  }
+  return maxSoFar;
 }
