@@ -14,5 +14,12 @@ class BST {
 }
 
 function valBST(tree) {
+  return helper(tree, -Infinity, Infinity);
+}
 
+function helper(tree, minVal, maxVal) {
+  if (tree === null) return true;
+  if (tree.value < minVal && tree.value > maxVal) return false;
+  const leftSide = helper(tree.left, minVal, tree.value);
+  return leftSide && helper(tree.value, tree.value, maxVal);
 }
