@@ -13,13 +13,28 @@
 // output - array where the first indes of the array is the furthest left leaf goes up then the irght side and last idx is the root
 
 function inOrderTrav(tree, array) {
-
+  if (tree !== null) {
+    inOrderTrav(tree.left, array);
+    array.push(tree.value);
+    inOrderTrav(tree.right, array);
+  }
+  return array;
 }
 
 function preOrderTrav(tree, array) {
-
+  if (tree !== null) {
+    array.push(tree.value);
+    preOrderTrav(tree.left, array);
+    preOrderTrav(tree.right, array);
+  }
+  return array;
 }
 
 function postOrderTrav(tree, array) {
-
+  if (tree !== null) {
+    postOrderTrav(tree.left, array);
+    postOrderTrav(tree.right, array);
+    array.push(tree.value, array)
+  }
+  return array;
 }
