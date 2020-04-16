@@ -15,6 +15,21 @@ class Node {
     return this;
   }
   bFS(array) {
-
+    // define the que and assign it to this 
+    const que = [this];
+    // while loop to have a condition if the length of que is greater than 0
+    while (que.length > 0) {
+      // define current which is the first index by pop it
+      const current = que.shift();
+      // push the current to the array
+      array.push(current.name);
+      // loop thru the children 
+      for (const child of current.children) {
+        // push the child to the array
+        array.push(child)
+      }
+    }
+    //return array
+    return array;
   }
 }
